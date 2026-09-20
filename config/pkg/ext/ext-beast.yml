@@ -1,0 +1,11 @@
+beastx:
+  type: external
+  source:
+    type: git
+    url: https://github.com/AhmedSabryH/my-beast.git
+    rev: main
+  arg-type: enable
+  support:
+    Windows: yes
+    Linux: yes
+    Darwin: yes
