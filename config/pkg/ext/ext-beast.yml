@@ -1,0 +1,8 @@
+beast:
+    type: external
+    source: beast
+    arg-type: enable
+    support:
+        Windows: yes
+        Linux: yes
+        Darwin: yes
