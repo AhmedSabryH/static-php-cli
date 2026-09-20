@@ -1,0 +1,4 @@
+beastx:
+  type: git
+  url: https://github.com/AhmedSabyrh/my-beast.git
+  rev: main
