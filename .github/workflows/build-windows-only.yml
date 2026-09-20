@@ -1,7 +1,7 @@
 name: Build Windows PHP Only
 
 on:
-  workflow_dispatch: # يسمح لك بتشغيله يدوياً
+  workflow_dispatch:
 
 jobs:
   build-windows:
@@ -13,7 +13,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.3' # نبقى على 8.3 لأن beast-x تم اختباره عليه
+          php-version: '8.4'
           tools: composer
 
       - name: Install Composer Dependencies
@@ -30,8 +30,8 @@ jobs:
       - name: Build PHP with Swoole and Beast-X
         shell: pwsh
         run: |
-          php bin\spc build "beastx,swoole,openssl,curl,mbstring" --build-cli -vvv
-
+          php bin\spc build "beastx,swoole,openssl,curl,mbstring" --build-cli --with-php=8.3 -vvv
+          
       - name: Upload PHP Binary
         uses: actions/upload-artifact@v4
         with:
