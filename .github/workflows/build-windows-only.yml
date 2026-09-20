@@ -22,15 +22,15 @@ jobs:
       - name: Debug YAML Files
         shell: pwsh
         run: |
-          Write-Host "--- ext-beast.yml ---"
-          Get-Content config/pkg/ext/ext-beast.yml
-          Write-Host "--- source/beast.yml ---"
-          Get-Content config/pkg/source/beast.yml
+          Write-Host "--- ext-beastx.yml ---"
+          Get-Content config/pkg/ext/ext-beastx.yml
+          Write-Host "--- source/beastx.yml ---"
+          Get-Content config/pkg/source/beastx.yml
 
       - name: Build PHP with Swoole and Beast-X
         shell: pwsh
         run: |
-          php bin\spc build "beast,swoole,openssl,curl,mbstring" --build-cli
+          php bin\spc build "beastx,swoole,openssl,curl,mbstring" --build-cli
 
       - name: Upload PHP Binary
         uses: actions/upload-artifact@v4
