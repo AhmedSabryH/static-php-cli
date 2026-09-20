@@ -3,6 +3,6 @@ beast:
   source: beast
   arg-type: enable
   support:
-    Windows: yes
-    Linux: yes
-    Darwin: yes
+    Windows: "yes"
+    Linux: "yes"
+    Darwin: "yes"
