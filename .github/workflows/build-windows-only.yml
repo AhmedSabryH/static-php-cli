@@ -1,11 +1,11 @@
 name: Build Windows PHP Only
 
 on:
-  workflow_dispatch: # يسمح لك بتشغيله يدوياً من تبويب Actions
+  workflow_dispatch: # يسمح لك بتشغيله يدوياً
 
 jobs:
   build-windows:
-    runs-on: windows-latest # نستخدم سيرفر ويندوز فقط
+    runs-on: windows-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -14,15 +14,19 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.3'
+          tools: composer # التأكد من تثبيت Composer
+
+      - name: Install Composer Dependencies
+        run: composer install --no-dev --prefer-dist --optimize-autoloader
 
       - name: Build PHP with Swoole and Beast-X
         shell: pwsh
         run: |
-          # تشغيل أداة spc لبناء PHP مع الإضافات المطلوبة
-          .\bin\spc.ps1 build "beastx,swoole,openssl,curl,mbstring" --build-cli
+          # استخدام php مباشرة لتشغيل السكربت بدلاً من ملف ps1
+          php bin\spc build "beast,swoole,openssl,curl,mbstring" --build-cli
 
       - name: Upload PHP Binary
         uses: actions/upload-artifact@v4
         with:
           name: php-windows-x64
-          path: buildroot/bin/php.exe # مسار ملف php.exe الناتج
+          path: buildroot/bin/php.exe
