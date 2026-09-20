@@ -30,7 +30,7 @@ jobs:
       - name: Build PHP with Swoole and Beast-X
         shell: pwsh
         run: |
-          php bin\spc build "beastx,swoole,openssl,curl,mbstring" --build-cli
+          php bin\spc build "beastx,swoole,openssl,curl,mbstring" --build-cli -vvv
 
       - name: Upload PHP Binary
         uses: actions/upload-artifact@v4
