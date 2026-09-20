@@ -1,4 +1,4 @@
-beastx:
+beast:
   type: external
   source:
     type: git
