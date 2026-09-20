@@ -1,8 +1,15 @@
-beastx:
-  type: external
-  source: beastx
-  arg-type: enable
-  support:
-    Windows: true
-    Linux: true
-    Darwin: true
+ext-beastx:
+  type: php-extension
+  artifact:
+    source:
+      type: ghtar
+      repo: AhmedSabyrh/my-beast
+    metadata:
+      license-files: [LICENSE]
+      license: PHP-3.01
+  php-extension:
+    os:
+      - Linux
+      - Darwin
+      - Windows
+    arg-type: enable
