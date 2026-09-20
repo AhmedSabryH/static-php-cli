@@ -1,9 +1,6 @@
 beast:
   type: external
-  source:
-    type: git
-    url: https://github.com/AhmedSabryH/my-beast.git
-    rev: main
+  source: beast
   arg-type: enable
   support:
     Windows: yes
