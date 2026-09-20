@@ -13,16 +13,16 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.3'
-          tools: composer # التأكد من تثبيت Composer
+          php-version: '8.3' # نبقى على 8.3 لأن beast-x تم اختباره عليه
+          tools: composer
 
       - name: Install Composer Dependencies
-        run: composer install --no-dev --prefer-dist --optimize-autoloader
+        run: composer install --no-dev --prefer-dist --optimize-autoloader --ignore-platform-reqs
+        # لاحظ إضافة --ignore-platform-reqs لتجاوز شرط إصدار PHP
 
       - name: Build PHP with Swoole and Beast-X
         shell: pwsh
         run: |
-          # استخدام php مباشرة لتشغيل السكربت بدلاً من ملف ps1
           php bin\spc build "beast,swoole,openssl,curl,mbstring" --build-cli
 
       - name: Upload PHP Binary
