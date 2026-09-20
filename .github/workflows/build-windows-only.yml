@@ -18,7 +18,14 @@ jobs:
 
       - name: Install Composer Dependencies
         run: composer install --no-dev --prefer-dist --optimize-autoloader --ignore-platform-reqs
-        # لاحظ إضافة --ignore-platform-reqs لتجاوز شرط إصدار PHP
+
+      - name: Debug YAML Files
+        shell: pwsh
+        run: |
+          Write-Host "--- ext-beast.yml ---"
+          Get-Content config/pkg/ext/ext-beast.yml
+          Write-Host "--- source/beast.yml ---"
+          Get-Content config/pkg/source/beast.yml
 
       - name: Build PHP with Swoole and Beast-X
         shell: pwsh
