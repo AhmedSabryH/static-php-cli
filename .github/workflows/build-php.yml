@@ -1,0 +1,29 @@
+name: Build Custom PHP with Swoole and Beast
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch: # يسمح لك بتشغيله يدوياً
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+
+      - name: Run SPC Build
+        shell: pwsh
+        run: |
+          .\bin\spc.ps1 build "beast,swoole,openssl,curl,mbstring" --build-cli
+
+      - name: Upload PHP Binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: php-windows-x64
+          path: buildroot/bin/php.exe
